@@ -1,0 +1,76 @@
+// 
+// button_to(name=nil,options=nil,html_options=nil &block)
+// options -> :method(:put,:patch, etc), :disabled, :data(custom data)**, :remote(javascript/jquery), :form(hash -> form attrs), :form_class(changes class of the form), :params(parameters to be hidden within the form)
+
+// **data attrs -> :confirm(alert box to confirm submission), :disable_with(value of form if button were disabled)
+
+// button_to generates a form
+
+=button_to "New", action: "new"
+
+%form= method="post" action="/controller/new" class="button_to"
+	%input= value="New" type="Submit"
+
+=button_to "New", new_articles_path
+
+%form= method="post" action"/articles/new" class="button_to"
+	%input= value="New" type="Submit"
+
+=button_to "Create", { action: "create" }, remote: true, form: { "data-type" => "json" }
+
+%form= method="post" action="/images/create" class="button_to" data-remote="true" data-type="json"
+	%input= value="Create" type="submit"
+	%input= name="authenticity_token" type="hidden" value="10f2163b45388899ad4d5ae948988266befcb6c3d1b2451...."
+
+
+//
+// link_to(name=nil, options=nil,html_options=nil &block)
+// ** :back generates a link to the referrer(previous page?)
+// generates link tag 
+
+=link_to(body, url, html_options = {})
+
+// :data, :method, :remote, --> :data options same as button_to
+=link_to "Profile", controller: "profiles", action: "show", id: @profile
+=link_to "Profile", profile_path(@profile)
+=link_to "Profile", @profile
+%a= href="/profiles/1" value="Profile"
+
+=link_to "Profiles", profile_path
+%a= herf="/profiles" value="Profiles"
+
+options: { data in here is safe } but data out here might be interpreted incorrectly
+href="/blanks/blank?but&data&out&here&might&be&..."
+
+
+// anchors or query strings can be generated as well
+=link_to "Comment wall", profile_path(@profile, anchor: "wall")
+%a= href="/profiles/1#wall" value="Comment wall"
+
+=link_to "Ruby on Rails search", controller: "searches", query: "ruby on rails"
+%a= href="searches?query=ruby+on+rails" value="Ruby on Rails search"
+
+// extra link_to things
+=link_to_if(condition, normal stuff)
+=link_to_unless(condition, normal stuff)
+=link_to_unless_current(normal stuff)
+// if the current URI is the same as the link's request, then no link will be generated, but the text still shows
+
+
+// Form helpers
+
+// form_tag is almost exactly the same as just writing html tags
+// good for making checkboxes, radio buttons, text_areas, password_fields, date fields, telephone etc
+
+// form_for some_object, url, html, do |f|
+// fields_for some_object.property //generates the input fields for the property
+
+// resources :articles
+
+// form_for @article
+
+// namespaces
+// form_for [:admin, @article]
+// submits form inside admin namespace
+
+// file uploading
