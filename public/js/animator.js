@@ -1,5 +1,5 @@
 var elem = document.getElementById("main");
-params = { width: 10000, height: 10000 };
+params = { width: 2500, height: 2500 };
 two = new Two(params);
 two.appendTo(elem);
 
@@ -11,11 +11,11 @@ function getPostitions(angle, orbit) {
 	};
 }
 
-var orbitalMultiplier = 1,
-    radiusMultiplier  = 1,
+var orbitalMultiplier = 0.3,
+    radiusMultiplier  = .3,
     timeScale 				= 1,
-    sunScale 					= 0.01,
-		origin 	 	   			= 5000;
+    sunScale 					= 0.005,
+		origin 	 	   			= 1250;
 
 var mercuryAngle  = 0,
 		mercuryOrbit  = 42 * orbitalMultiplier,
