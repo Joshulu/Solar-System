@@ -1,2 +1,1 @@
-# Solar-System
-Two.js used to create a simple solar system model
+A simple model of the solar system.  Distance is to scale.  Every planet is to scale, the sun is made extra small.
